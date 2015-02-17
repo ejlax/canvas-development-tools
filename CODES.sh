@@ -396,7 +396,6 @@ installNodejs ()
             sudo yum -y install nodejs npm
         elif runningUbuntu; then
             # On Ubuntu we need to use the nodejs ppa from Chris Lea or we get breakage
-            sudo apt-get -y remove nodejs nodejs-legacy npm
             sudo apt-get -y install software-properties-common
             sudo add-apt-repository -y ppa:chris-lea/node.js
             sudo apt-get update
@@ -1399,6 +1398,7 @@ if is_clone; then
         fi
     else
         CLONE_URL='https://github.com/instructure/canvas-lms.git'
+        echo "unsafe-perms=true" >> /root/canvas-lms/.npmrc
     fi
 
     cyan "\nDo you want to generate ctags? (Y/[N]): "
