@@ -397,7 +397,7 @@ installNodejs ()
         elif runningUbuntu; then
             # On Ubuntu we need to use the nodejs ppa from Chris Lea or we get breakage
             sudo apt-get -y remove nodejs nodejs-legacy npm
-            sudo apt-get -y install apt-get -y software-properties-common
+            sudo apt-get -y install software-properties-common
             sudo add-apt-repository -y ppa:chris-lea/node.js
             sudo apt-get update
             sudo apt-get -y install nodejs
