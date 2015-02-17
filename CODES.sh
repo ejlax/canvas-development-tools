@@ -1398,7 +1398,6 @@ if is_clone; then
         fi
     else
         CLONE_URL='https://github.com/instructure/canvas-lms.git'
-        echo "unsafe-perms=true" >> /root/canvas-lms/.npmrc
     fi
 
     cyan "\nDo you want to generate ctags? (Y/[N]): "
@@ -1424,7 +1423,7 @@ if is_clone; then
 
     # Move to the newly created canvas directory
     cd "$canvaslocation" || die "Could not move to the newly cloned directory"
-
+    echo "unsafe-perms=true" >> "$canvaslocation/.npmrc"
     [[ $CHRUBY =~ [Yy] ]] && { writeChrubyFile || die "Error writing Chruby file to your repo.  Please install create the file manually and try again"; }
     [[ $CHRUBY =~ [Yy] ]] && { installRubyRI || die "Error installing ruby with ruby-install.  Please try manually and run this script again (ruby-install ruby $RUBY_VER)"; }
     installBundler || die "Error installing bundle.  Please install bundle manually and try again"
